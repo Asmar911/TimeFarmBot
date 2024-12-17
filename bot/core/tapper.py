@@ -678,7 +678,7 @@ class Tapper:
 async def run_tapper(tg_client: Client, user_agent: str, proxy: str | None):
     try:
         if settings.ACCOUNTS_MOOD_SEQUENTIAL:
-            _sleep = randint(3, 6)
+            _sleep = randint(*settings.LOGIN_SLEEP)
             logger.info(f"{tg_client.name: <10} | Bot will start in {_sleep}s ...")
             await asyncio.sleep(_sleep)
             await Tapper(tg_client=tg_client).run(user_agent=user_agent, proxy=proxy)
